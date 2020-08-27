@@ -1,0 +1,22 @@
+    private static void builderExample() {
+        long startTime = System.nanoTime();
+        //
+        String s0 = "Example";
+        for (int i = 0; i < 100_000; i++) {
+            s0 += i;
+        }
+        float deltaTime = (System.nanoTime() - startTime) * 0.000001f;
+        System.out.println(deltaTime + " millisec");
+
+        System.gc();
+
+        startTime = System.nanoTime();
+        StringBuilder s1 = new StringBuilder("Example");
+        for (int i = 0; i < 100_000; i++) {
+            s1.append(i);
+        }
+        deltaTime = (System.nanoTime() - startTime) * 0.000001f;
+        System.out.println(deltaTime + " millisec");
+
+        System.out.println(s0.equals(s1.toString()));
+    }
